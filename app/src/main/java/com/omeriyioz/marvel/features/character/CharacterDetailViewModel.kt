@@ -16,19 +16,15 @@ class CharacterDetailViewModel @Inject constructor(
     private val repository: MarvelRepository
 ) : ViewModel() {
 
-    private val _repoDTOList = MutableLiveData<CharacterListDTO>()
-    val repoDTOList: LiveData<CharacterListDTO>
-        get() = _repoDTOList
+    private val _characterListDTO = MutableLiveData<CharacterListDTO>()
+    val characterListDTO: LiveData<CharacterListDTO>
+        get() = _characterListDTO
 
-    init {
-        getRepoDTOList()
-    }
-
-    private fun getRepoDTOList() {
+    fun getCharacter(id: String?) {
         viewModelScope.launch {
             try {
-                _repoDTOList.value = repository.getRepoDTOList("oiyio")
-                Log.d("omertest", "size :" + _repoDTOList.value!!.copyright)
+                _characterListDTO.value = repository.getCharacter(id!!)
+                Log.d("omertest", "size :" + _characterListDTO.value!!.copyright)
             } catch (e: Exception) {
                 Log.d("omertest", "Exception : $e")
             }

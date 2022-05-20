@@ -8,7 +8,13 @@
         android:id="@+id/fragment_character_detail"
         android:name="com.omeriyioz.marvel.features.character.CharacterDetailFragment"
         android:label="fragment_character_detail"
-        tools:layout="@layout/fragment_compose_view" />
+        tools:layout="@layout/fragment_compose_view" >
+
+        <argument
+            android:name="id"
+            app:argType="string" />
+
+    </fragment>
 
     <fragment
         android:id="@+id/fragment_character_list"

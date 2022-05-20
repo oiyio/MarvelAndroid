@@ -7,8 +7,8 @@ class MarvelRepository @Inject constructor(
     private val marvelRemoteDataSource: MarvelRemoteDataSource
 ) {
 
-    suspend fun getRepoDTOList(user: String): CharacterListDTO {
-        return marvelRemoteDataSource.getRepoDTOList(user)
+    suspend fun getCharacter(id: String): CharacterListDTO {
+        return marvelRemoteDataSource.getCharacter(id)
     }
 
     suspend fun getCharacterList(): CharacterListDTO {

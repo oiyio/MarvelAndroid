@@ -21,7 +21,9 @@ class CharacterDetailFragment : Fragment(R.layout.fragment_compose_view) {
         return inflater.inflate(R.layout.fragment_compose_view, container, false).apply {
             findViewById<ComposeView>(R.id.compose_view).setContent {
 
-                CharacterDetailScreen()
+                val id = arguments?.getString("id")
+
+                CharacterDetailScreen(id)
             }
         }
     }
