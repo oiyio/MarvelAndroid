@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    app:startDestination="@id/fragment_character_list">
+
+    <fragment
+        android:id="@+id/fragment_character_detail"
+        android:name="com.omeriyioz.marvel.features.character.CharacterDetailFragment"
+        android:label="fragment_character_detail"
+        tools:layout="@layout/fragment_compose_view" />
+
+    <fragment
+        android:id="@+id/fragment_character_list"
+        android:name="com.omeriyioz.marvel.features.characterlist.CharacterListFragment"
+        android:label="fragment_character_list"
+        tools:layout="@layout/fragment_compose_view">
+
+        <action
+            android:id="@+id/action_character_list_to_character_detail"
+            app:destination="@id/fragment_character_detail"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+    </fragment>
+
+</navigation>

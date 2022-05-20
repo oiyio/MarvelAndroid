@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/fragment_character_detail"
+        android:icon="@drawable/ic_home"
+        android:title="Repositories" />
+
+    <item
+        android:id="@+id/fragment_character_list"
+        android:icon="@drawable/ic_details"
+        android:title="Search User" />
+
+    <item
+        android:id="@+id/fragment3_dest"
+        android:icon="@drawable/ic_settings"
+        android:title="Follows" />
+</menu>
