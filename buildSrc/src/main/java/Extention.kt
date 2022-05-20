@@ -19,6 +19,8 @@ fun DependencyHandler.composeDependencies() {
     implementation("androidx.compose.runtime:runtime-livedata:${Versions.composeVersion}")
 
     implementation("androidx.navigation:navigation-compose:2.4.0-beta02")
+
+    implementation("com.github.skydoves:landscapist-glide:1.3.6")
 }
 
 fun DependencyHandler.hiltDependencies() {
