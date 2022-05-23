@@ -44,8 +44,7 @@ fun CharacterListScreen(
                 items(result) { result ->
                     result?.let {
                         Text(
-                            text = "avatar_url : ${result.name} - " +
-                                "id : ${result.id}",
+                            text = "${result.name}",
                             modifier = Modifier.clickable(
                                 onClick = {
                                     onClick(result.id)
@@ -65,7 +64,12 @@ fun CharacterListScreen(
                                 contentDescription = null,
                                 modifier = Modifier
                                     .size(40.dp)
-                                    .clip(RoundedCornerShape(20)),
+                                    .clip(RoundedCornerShape(20))
+                                    .clickable(
+                                        onClick = {
+                                            onClick(result.id)
+                                        }
+                                    ),
                                 error = ImageBitmap.imageResource(android.R.drawable.stat_notify_error)
                             )
                         }

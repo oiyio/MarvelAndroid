@@ -39,8 +39,7 @@ fun CharacterDetailScreen(
                 content = {
                     items(results) { result ->
                         Text(
-                            text = "avatar_url : ${result.name} - " +
-                                "id : ${result.id}"
+                            text = "${result.name}"
                         )
 
                         result.thumbnail?.path?.let { thumbnailPath->
