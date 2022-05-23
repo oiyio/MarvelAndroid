@@ -31,7 +31,7 @@ class MarvelPagingDataSource @javax.inject.Inject constructor(
             val nextKey = offset + LOAD_SIZE
 
 
-            delay(500)
+            delay(300)
 
 
             LoadResult.Page(response.data?.results.orEmpty(), null, nextKey)

@@ -8,7 +8,7 @@ import com.omeriyioz.data.network.models.Result
 import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 
-const val LOAD_SIZE = 10
+const val LOAD_SIZE = 30
 const val START_INDEX = 0
 
 class MarvelRepository @Inject constructor(
