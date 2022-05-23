@@ -17,7 +17,11 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.ImageBitmap
 import androidx.compose.ui.res.imageResource
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.font.FontStyle
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.paging.compose.collectAsLazyPagingItems
 import androidx.paging.compose.items
@@ -49,8 +53,19 @@ fun CharacterListScreen(
                                 onClick = {
                                     onClick(result.id)
                                 }
-                            )
+                            ),
+                            color = Color.Red,
+                            fontWeight = FontWeight.Bold
                         )
+
+                        result.description?.let {
+                            Text(
+                                text = it,
+                                fontStyle = FontStyle.Italic,
+                                color = Color.Gray
+                            )
+                        }
+
 
                         result.thumbnail?.path?.let { thumbnailPath ->
                             val httpsPath = if (thumbnailPath.startsWith("https")) thumbnailPath
@@ -73,6 +88,26 @@ fun CharacterListScreen(
                                 error = ImageBitmap.imageResource(android.R.drawable.stat_notify_error)
                             )
                         }
+
+                        Text(
+                            text = "The comics of this character : ",
+                            textDecoration = TextDecoration.Underline,
+                            fontStyle = FontStyle.Italic
+                        )
+
+
+                        result.comics?.items?.forEach {
+                            it.name?.let {
+                                Text(
+                                    text = it,
+                                    fontSize = 8.sp
+                                )
+                            }
+                        }
+
+
+
+
 
                         Divider(color = Color.Black)
                         Spacer(modifier = Modifier.height(8.dp))

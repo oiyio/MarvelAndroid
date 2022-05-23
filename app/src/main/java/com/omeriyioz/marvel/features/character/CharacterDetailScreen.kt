@@ -20,6 +20,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.ImageBitmap
 import androidx.compose.ui.res.imageResource
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.skydoves.landscapist.glide.GlideImage
@@ -39,7 +40,9 @@ fun CharacterDetailScreen(
                 content = {
                     items(results) { result ->
                         Text(
-                            text = "${result.name}"
+                            text = "${result.name}",
+                            color = Color.Red,
+                            fontWeight = FontWeight.Bold
                         )
 
                         result.thumbnail?.path?.let { thumbnailPath->
