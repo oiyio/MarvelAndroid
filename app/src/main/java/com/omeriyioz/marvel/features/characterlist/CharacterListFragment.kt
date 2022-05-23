@@ -23,12 +23,15 @@ class CharacterListFragment : Fragment() {
         return inflater.inflate(R.layout.fragment_compose_view, container, false).apply {
             findViewById<ComposeView>(R.id.compose_view).setContent {
 
-                CharacterListScreen() {
+
+                CharacterListScreen {
                     val bundle = bundleOf("id" to it)
-                    findNavController().navigate(R.id.action_character_list_to_character_detail, bundle)
+                    findNavController().navigate(
+                        R.id.action_character_list_to_character_detail,
+                        bundle
+                    )
                 }
             }
         }
     }
-
 }

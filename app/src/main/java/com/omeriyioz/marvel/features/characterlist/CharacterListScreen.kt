@@ -7,13 +7,10 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Divider
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
@@ -21,28 +18,31 @@ import androidx.compose.ui.graphics.ImageBitmap
 import androidx.compose.ui.res.imageResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
-import androidx.lifecycle.viewmodel.compose.viewModel
+import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.paging.compose.collectAsLazyPagingItems
+import androidx.paging.compose.items
 import com.skydoves.landscapist.glide.GlideImage
 
 @Composable
 fun CharacterListScreen(
-    characterListViewModel: CharacterListViewModel = viewModel(),
+    characterListViewModel: CharacterListViewModel = hiltViewModel(),
     onClick: (String?) -> Unit,
 ) {
-    val characterListDTO by characterListViewModel.characterListDTO.observeAsState()
+
+    val result = characterListViewModel.getAllImages.collectAsLazyPagingItems()
 
     Column(
         modifier = Modifier
             .fillMaxSize()
     ) {
 
-        Text("Size : ${characterListDTO?.data?.results?.size}")
+        Text("Characters List")
         Divider(color = Color.Red)
 
-        characterListDTO?.data?.results?.let { results ->
-            LazyColumn(
-                content = {
-                    items(results) { result ->
+        LazyColumn(
+            content = {
+                items(result) { result ->
+                    result?.let {
                         Text(
                             text = "avatar_url : ${result.name} - " +
                                 "id : ${result.id}",
@@ -73,9 +73,10 @@ fun CharacterListScreen(
                         Divider(color = Color.Black)
                         Spacer(modifier = Modifier.height(8.dp))
                     }
+
                 }
-            )
-        }
+            }
+        )
 
     }
 }

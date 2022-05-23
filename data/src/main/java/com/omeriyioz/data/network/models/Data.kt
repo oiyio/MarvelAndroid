@@ -10,6 +10,6 @@ data class Data(
     @SerializedName("limit") var limit: String? = null,
     @SerializedName("total") var total: String? = null,
     @SerializedName("count") var count: String? = null,
-    @SerializedName("results") var results: ArrayList<Results> = arrayListOf()
+    @SerializedName("results") var results: ArrayList<Result> = arrayListOf()
 
 )
