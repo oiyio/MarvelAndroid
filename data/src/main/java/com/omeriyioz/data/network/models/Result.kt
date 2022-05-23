@@ -7,6 +7,7 @@ import kotlinx.serialization.Serializable
 data class Result(
 
     @SerializedName("id") var id: String? = null,
+    @SerializedName("title") var title: String? = null,
     @SerializedName("name") var name: String? = null,
     @SerializedName("description") var description: String? = null,
     @SerializedName("modified") var modified: String? = null,

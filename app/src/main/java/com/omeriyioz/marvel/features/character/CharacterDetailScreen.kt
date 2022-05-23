@@ -20,8 +20,11 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.ImageBitmap
 import androidx.compose.ui.res.imageResource
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.skydoves.landscapist.glide.GlideImage
 
@@ -31,6 +34,7 @@ fun CharacterDetailScreen(
     characterDetailViewModel: CharacterDetailViewModel = viewModel()
 ) {
     val characterListDTO by characterDetailViewModel.characterListDTO.observeAsState()
+    val comicsListDTO by characterDetailViewModel.comicsListDTO.observeAsState()
     characterDetailViewModel.getCharacter(id)
 
     Column(modifier = Modifier.fillMaxSize()) {
@@ -45,7 +49,7 @@ fun CharacterDetailScreen(
                             fontWeight = FontWeight.Bold
                         )
 
-                        result.thumbnail?.path?.let { thumbnailPath->
+                        result.thumbnail?.path?.let { thumbnailPath ->
                             val httpsPath = if (thumbnailPath.startsWith("https")) thumbnailPath
                             else thumbnailPath.replaceFirst("http", "https")
 
@@ -60,6 +64,27 @@ fun CharacterDetailScreen(
                                     .wrapContentHeight()
                                     .clip(CircleShape),
                                 error = ImageBitmap.imageResource(android.R.drawable.stat_notify_error)
+                            )
+                        }
+
+
+                        Text(
+                            text = "The comics of this character : ",
+                            textDecoration = TextDecoration.Underline,
+                            fontStyle = FontStyle.Italic
+                        )
+
+
+                        comicsListDTO?.data?.results?.forEach {
+                            it.title?.let {
+                                Text(
+                                    text = it,
+                                    fontSize = 8.sp
+                                )
+                            }
+                        } ?: kotlin.run {
+                            Text(
+                                text = "No result is found"
                             )
                         }
 

@@ -20,11 +20,23 @@ class CharacterDetailViewModel @Inject constructor(
     val characterListDTO: LiveData<CharacterListDTO>
         get() = _characterListDTO
 
+
+    private val _comicsListDTO = MutableLiveData<CharacterListDTO>()
+    val comicsListDTO: LiveData<CharacterListDTO>
+        get() = _comicsListDTO
+
     fun getCharacter(id: String?) {
         viewModelScope.launch {
             try {
                 _characterListDTO.value = repository.getCharacter(id!!)
                 Log.d("omertest", "size :" + _characterListDTO.value!!.copyright)
+            } catch (e: Exception) {
+                Log.d("omertest", "Exception : $e")
+            }
+
+            try {
+                _comicsListDTO.value = repository.getComics(id!!)
+                Log.d("omertest", "size :" + _comicsListDTO.value!!.copyright)
             } catch (e: Exception) {
                 Log.d("omertest", "Exception : $e")
             }

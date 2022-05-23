@@ -19,6 +19,16 @@ class MarvelRepository @Inject constructor(
         return retrofitService.getCharacter(id)
     }
 
+    // https://gateway.marvel.com:443/v1/public/characters/1011334/comics?startYear=2005&orderBy=onsaleDate&limit=10&apikey=beb0043f8fde72f12cc9c076475e7c1c
+    suspend fun getComics(id: String): CharacterListDTO {
+        return retrofitService.getComics(
+            characterId = id,
+            startYear = "2005",
+            orderBy = "onsaleDate",
+            limit = "10"
+        )
+    }
+
     fun getCharacterListPaginated(): Flow<PagingData<Result>> = Pager(
         PagingConfig(
             pageSize = LOAD_SIZE,

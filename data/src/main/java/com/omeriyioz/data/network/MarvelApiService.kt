@@ -18,4 +18,16 @@ interface MarvelApiService {
     * */
     @GET("v1/public/characters/{characterId}")
     suspend fun getCharacter(@Path("characterId") characterId: String): CharacterListDTO
+
+    /*
+    * 🔥 Comics list of the character
+    * https://gateway.marvel.com:443/v1/public/characters/1011334/comics?startYear=2005&orderBy=onsaleDate&limit=10&apikey=beb0043f8fde72f12cc9c076475e7c1c
+    * */
+    @GET("v1/public/characters/{characterId}/comics")
+    suspend fun getComics(
+        @Path("characterId") characterId: String,
+        @Query("startYear") startYear: String,
+        @Query("orderBy") orderBy: String,
+        @Query("limit") limit: String
+    ): CharacterListDTO
 }
