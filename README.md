@@ -14,6 +14,7 @@ This app demonstrates the following views and techniques:
 * [Jetpack Compose](https://developer.android.com/jetpack/compose) for Jetpack Compose
 * [Navigation](https://developer.android.com/topic/libraries/architecture/navigation/) with the SafeArgs plugin for parameter passing between fragments
 * [Hilt](https://developer.android.com/training/dependency-injection/hilt-android) for dependency injection
+* [Pagination 3](https://developer.android.com/reference/kotlin/androidx/paging/compose/package-summary) for Pagination with Compose
 * [Kotlin DSL Gradle](https://docs.gradle.org/current/userguide/kotlin_dsl.html) for Gradle
 * [ViewModel](https://developer.android.com/topic/libraries/architecture/viewmodel)
 * [LiveData](https://developer.android.com/topic/libraries/architecture/livedata)
